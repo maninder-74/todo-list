@@ -1,7 +1,6 @@
   require('dotenv').config();
   const express = require('express');
   const cors = require('cors');
-  app.use(cors());
   const connectDB = require('./config/db');
   const taskRoutes = require('./routes/taskRoutes');
   const { errorHandler, notFound } = require('./middleware/errorHandler');
