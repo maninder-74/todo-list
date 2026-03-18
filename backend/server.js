@@ -24,11 +24,8 @@ const __dirname = path.resolve();
   // });
 // }
 
-app.listen(PORT, () => {
-  connectDB().then(() => {
+connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log("Server started");
+    console.log(`Server started on port ${PORT}`);
   });
-});
-  console.log("Server started at http://localhost:5000");
 });
