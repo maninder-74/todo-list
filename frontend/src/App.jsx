@@ -10,13 +10,13 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [editingTodo, setEditingTodo] = useState(null);
   const [editedText, setEditedText] = useState("");
-  const API = "https://todo-list-backend-7w50.onrender.com";
+  const API = "https://todo-list-1-21tf.onrender.com";
 
   const addTodo = async (e) => {
     e.preventDefault();
     if (!newTodo.trim()) return;
     try {
-      const response = await axios.post("/api/todos", { text: newTodo });
+      const response = await axios.post(`${API}/api/todos`, { text: newTodo });
       setTodos([...todos, response.data]);
       setNewTodo("");
     } catch (error) {
