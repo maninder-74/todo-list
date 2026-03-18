@@ -11,7 +11,9 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-// app.use(cors());
+app.use(cors({
+   origin: "https://preeminent-moonbeam-0f6696.netlify.app"
+}));
 
 app.use("/api/todos", todoRoutes);
 
