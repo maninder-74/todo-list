@@ -10,6 +10,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [editingTodo, setEditingTodo] = useState(null);
   const [editedText, setEditedText] = useState("");
+  const API = "https://todo-list-backend-7w50.onrender.com";
 
   const addTodo = async (e) => {
     e.preventDefault();
@@ -25,9 +26,8 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("/api/todos");
-      console.log(response.data);
-      setTodos(response.data);
+      const res = await axios.get(`${API}/api/todos`);
+      setTodos(res.data);
     } catch (error) {
       console.log("Error fetching todos:", error);
     }
@@ -44,7 +44,7 @@ function App() {
 
   const saveEdit = async (id) => {
     try {
-      const response = await axios.patch(`/api/todos/${id}`, {
+      const response = await axios.patch(`${API}/api/todos/${id}`, {
         text: editedText,
       });
       setTodos(todos.map((todo) => (todo._id === id ? response.data : todo)));
@@ -56,7 +56,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`/api/todos/${id}`);
+      await axios.delete(`${API}/api/todos/${id}`);
       setTodos(todos.filter((todo) => todo._id !== id));
     } catch (error) {
       console.log("Error deleting todo:", error);
