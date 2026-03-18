@@ -25,6 +25,10 @@ const __dirname = path.resolve();
 // }
 
 app.listen(PORT, () => {
-  connectDB();
+  connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("Server started");
+  });
+});
   console.log("Server started at http://localhost:5000");
 });
